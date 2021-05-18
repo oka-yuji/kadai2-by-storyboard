@@ -11,16 +11,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var inputTextFieldOne: UITextField!
     @IBOutlet weak var inputTextFieldTwo: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
+        let numAraay: [UITextField] = [inputTextFieldOne, inputTextFieldTwo]
         
+        for item in numAraay {
+            item.keyboardType = UIKeyboardType.numberPad
+        }
     }
-   
+
     @IBAction func resultButton(_ sender: UIButton) {
+       
     }
     
 

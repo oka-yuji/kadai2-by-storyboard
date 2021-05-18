@@ -36,14 +36,16 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SIE-0L-eYX">
-                                        <rect key="frame" x="34.5" y="98" width="131" height="32"/>
+                                        <rect key="frame" x="44.5" y="98" width="111" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <segments>
-                                            <segment title="First"/>
-                                            <segment title="Second"/>
+                                            <segment title="+"/>
+                                            <segment title="-"/>
+                                            <segment title="×"/>
+                                            <segment title="÷"/>
                                         </segments>
-                                        <connections>
-                                            <action selector="segmentedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="a67-yY-7z5"/>
-                                        </connections>
+                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                        <color key="selectedSegmentTintColor" systemColor="systemBlueColor"/>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jr-wV-hz9">
                                         <rect key="frame" x="77" y="144" width="46" height="30"/>
@@ -75,6 +77,7 @@
                         <outlet property="inputTextFieldOne" destination="KgJ-BH-b8Y" id="EZd-Nr-UL2"/>
                         <outlet property="inputTextFieldTwo" destination="vRJ-SA-fuE" id="vrw-Le-9bU"/>
                         <outlet property="resultLabel" destination="yHa-jR-LK5" id="0ti-sV-vne"/>
+                        <outlet property="segmentedControl" destination="SIE-0L-eYX" id="U5x-8K-g7o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -85,6 +88,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
