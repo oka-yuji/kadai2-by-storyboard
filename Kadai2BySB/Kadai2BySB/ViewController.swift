@@ -25,15 +25,17 @@ class ViewController: UIViewController {
     @IBAction func resultButton(_ sender: UIButton) {
         let numAraay = [inputTextFieldOne, inputTextFieldTwo]
             .map({ Int($0?.text ?? "") ?? 0 })
-       
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
+        
+        switch (segmentedControl.selectedSegmentIndex, numAraay[1]) {
+        case (0,_):
             resultLabel.text = String(numAraay[0] + numAraay[1])
-        case 1:
+        case (1,_):
             resultLabel.text = String(numAraay[0] - numAraay[1])
-        case 2:
+        case (2,_):
             resultLabel.text = String(numAraay[0] * numAraay[1])
-        case 3:
+        case (3,0):
+            resultLabel.text = "0"
+        case (3,_):
             resultLabel.text = String(numAraay[0] / numAraay[1])
         default:
             resultLabel.text = "error"
