@@ -41,10 +41,16 @@
                                             <segment title="First"/>
                                             <segment title="Second"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="segmentedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="a67-yY-7z5"/>
+                                        </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jr-wV-hz9">
                                         <rect key="frame" x="77" y="144" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="resultButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gul-31-tVv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -58,12 +64,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yHa-jR-LK5" secondAttribute="trailing" symbolic="YES" id="2KN-G8-lPb"/>
                             <constraint firstItem="3bi-ru-TJh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="Eye-Hr-zkr"/>
                             <constraint firstItem="3bi-ru-TJh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IW8-J7-jbo"/>
                             <constraint firstItem="yHa-jR-LK5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="VAO-dF-wjF"/>
                             <constraint firstItem="yHa-jR-LK5" firstAttribute="top" secondItem="3bi-ru-TJh" secondAttribute="bottom" constant="40" id="o4R-J3-y4O"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="inputTextFieldOne" destination="KgJ-BH-b8Y" id="EZd-Nr-UL2"/>
+                        <outlet property="inputTextFieldTwo" destination="vRJ-SA-fuE" id="vrw-Le-9bU"/>
+                        <outlet property="resultLabel" destination="yHa-jR-LK5" id="0ti-sV-vne"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
