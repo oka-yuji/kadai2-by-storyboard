@@ -36,8 +36,11 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SIE-0L-eYX">
-                                        <rect key="frame" x="44.5" y="98" width="111" height="32"/>
+                                        <rect key="frame" x="0.0" y="98" width="200" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="NFu-ay-Qwt"/>
+                                        </constraints>
                                         <segments>
                                             <segment title="+"/>
                                             <segment title="-"/>
