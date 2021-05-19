@@ -8,10 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var inputTextFieldOne: UITextField!
-    @IBOutlet weak var inputTextFieldTwo: UITextField!
-    @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var inputTextFieldOne: UITextField!
+    @IBOutlet private weak var inputTextFieldTwo: UITextField!
+    @IBOutlet private weak var resultLabel: UILabel!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
