@@ -12,20 +12,23 @@ class ViewController: UIViewController {
     @IBOutlet private weak var inputTextFieldTwo: UITextField!
     @IBOutlet private weak var resultLabel: UILabel!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
-    
+    //TextFieldに入力したものを配列に入れる
+    private var textAraay: [UITextField] {[inputTextFieldOne, inputTextFieldTwo]}
     override func viewDidLoad() {
         super.viewDidLoad()
-        let numAraay: [UITextField] = [inputTextFieldOne, inputTextFieldTwo]
-        
-        for item in numAraay {
-            item.keyboardType = UIKeyboardType.numberPad
+       //配列にあるTextFieldに対してナンバー入力のキーボードが起動する
+        for item in textAraay {
+            item.keyboardType = .numberPad
         }
     }
-
+      //計算処理のメソッド
     @IBAction func resultButton(_ sender: UIButton) {
-        let numAraay = [inputTextFieldOne, inputTextFieldTwo]
-            .map({ Int($0?.text ?? "") ?? 0 })
-        
+        //配列にあるString？型を一括してInt型に変換
+        let numAraay = textAraay.map({ Int($0.text ?? "") ?? 0 })
+        /**
+         Index番号によって計算式を変更する。 case(3,0)に関してはTextFieldTwoに0が入るとエラーになるので必ずcase(3,_)より手前で処理
+         defaultにはエラー処理
+         */
         switch (segmentedControl.selectedSegmentIndex, numAraay[1]) {
         case (0,_):
             resultLabel.text = String(numAraay[0] + numAraay[1])
