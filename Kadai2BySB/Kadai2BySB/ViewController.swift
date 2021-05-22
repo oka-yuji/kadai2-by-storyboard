@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     private var textAraay: [UITextField] {[inputTextFieldOne, inputTextFieldTwo]}
     override func viewDidLoad() {
         super.viewDidLoad()
-       //配列にあるTextFieldに対してナンバー入力のキーボードが起動する
+        //配列にあるTextFieldに対してナンバー入力のキーボードが起動する
         for item in textAraay {
             item.keyboardType = .numberPad
         }
     }
-      //計算処理のメソッド
+    //計算処理のメソッド
     @IBAction func resultButton(_ sender: UIButton) {
         //配列にあるString？型を一括してInt型に変換
         let numAraay = textAraay.map({ Int($0.text ?? "") ?? 0 })
@@ -29,20 +29,32 @@ class ViewController: UIViewController {
          Index番号によって計算式を変更する。 case(3,0)に関してはTextFieldTwoに0が入るとエラーになるので必ずcase(3,_)より手前で処理
          defaultにはエラー処理
          */
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            resultLabel.text = String(numAraay[0] + numAraay[1])
-        case 1:
-            resultLabel.text = String(numAraay[0] - numAraay[1])
-        case 2:
-            resultLabel.text = String(numAraay[0] * numAraay[1])
-        case 3 where numAraay[1] == 0:
-            resultLabel.text = "0"
-        case 3:
-            resultLabel.text = String(numAraay[0] / numAraay[1])
-        default:
-            resultLabel.text = "error"
-        }
+        //        switch segmentedControl.selectedSegmentIndex {
+        //        case 0:
+        //            resultLabel.text = String(numAraay[0] + numAraay[1])
+        //        case 1:
+        //            resultLabel.text = String(numAraay[0] - numAraay[1])
+        //        case 2:
+        //            resultLabel.text = String(numAraay[0] * numAraay[1])
+        //        case 3 where numAraay[1] == 0:
+        //            resultLabel.text = "0"
+        //        case 3:
+        //            resultLabel.text = String(numAraay[0] / numAraay[1])
+        //        default:
+        //            resultLabel.text = "error"
+        //        }
+        resultLabel.text = {
+            guard let ope = Operator(selectedSegmentIndex: segmentedControl.selectedSegmentIndex) else {
+                return "error"
+            }
+            
+            switch ope.calculate(ope: ope, num1: numAraay[0], num2: numAraay[1]) {
+            case .success(let value):
+                return String(value)
+            case .failure(.divisionByZero):
+                return "0"
+            }
+        }()
     }
 }
 
@@ -50,7 +62,7 @@ private enum Operator {
     enum Error: Swift.Error {
         case divisionByZero
     }
-
+    
     case addition
     case subtraction
     case multiplication
@@ -71,16 +83,16 @@ private enum Operator {
             .success(ope(num1, num2))
         }
         switch ope {
-               case .addition:
-                   return apply(+)
-               case .subtraction:
-                   return apply(-)
-               case .multiplication:
-                   return apply(*)
-               case .division where num1 == 0:
-                return .failure(.divisionByZero)
-               case .division:
-                   return apply(/)
-               }
+        case .addition:
+            return apply(+)
+        case .subtraction:
+            return apply(-)
+        case .multiplication:
+            return apply(*)
+        case .division where num1 == 0 || num2 == 0:
+            return .failure(.divisionByZero)
+        case .division:
+            return apply(/)
+        }
     }
 }
